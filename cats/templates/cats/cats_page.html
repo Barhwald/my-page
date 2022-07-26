@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% load static wagtailimages_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+
+{% comment %}
+Delete the line below if you're just getting started and want to remove the welcome screen!
+{% endcomment %}
+<link rel="stylesheet" href="{% static 'css/cats.css' %}">
+
+{% endblock extra_css %}
+
+{% block content %}
+<div class="container content-start text-center pt-5">
+    <h1 class="heading text-warning">These are my cute cats</h1>
+    <h3 class="pt-5 pb-3 text-white">{{ page.banner_title }}</h3>
+    <h4 class="pb-4 text-white">{{ page.click_title }}</h4>
+</div>
+<div class="d-flex flex-wrap pt-4">
+    <div class="col d-flex flex-column align-items-center mt-5 mt-xxl-0 mx-2">
+            <div class="word text-white text-center pb-2">
+                <span>M</span>
+                <span>A</span>
+                <span>R</span>
+                <span>G</span>
+                <span>O</span>
+            </div>
+            <div class="card text-center" style="width: 18rem;">
+                {% image page.cat1_image width-600 as img %}
+                <figure class="zoom rounded" onmousemove="zoom(event)" style="background-image: url({{img.url}})"> 
+                    <img class="card-img-top" src="{{ img.url }}" alt="{{img.alt}}">
+                </figure>
+                <div class="card-body">
+                    <p class="card-text">She's a cute little princess. Likes to cuddle, but not too much.</p>
+                    <a href="/cats/margo/" class="btn btn-primary">See a full pic!</a>
+                </div>
+            </div>
+        </div>
+        <div class="col d-flex flex-column align-items-center mt-5 mt-xxl-0 mx-2">
+            <div class="word text-white text-center pb-2">
+                <span>D</span>
+                <span>O</span>
+                <span>R</span>
+                <span>I</span>
+            </div>
+            <div class="card text-center" style="width: 18rem;">
+                {% image page.cat2_image width-600 as img %}
+                <figure class="zoom rounded" onmousemove="zoom(event)" style="background-image: url({{img.url}})"> 
+                    <img class="card-img-top" src="{{ img.url }}" alt="{{img.alt}}">
+                </figure>
+                <div class="card-body text-center">
+                    <p class="card-text">She's the cutest and the most talkative being ever. </p>
+                    <a href="/cats/dori/" class="btn btn-primary">See a full pic!</a>
+                </div>
+            </div>
+        </div>
+        <div class="col d-flex flex-column align-items-center mt-5 mt-xxl-0 mx-2">
+            <div class="word text-white text-center pb-2">
+                <span>M</span>
+                <span>I</span>
+                <span>S</span>
+                <span>I</span>
+                <span>E</span>
+                <span>K</span>
+              </div>
+            <div class="card text-center" style="width: 18rem;">
+                {% image page.cat3_image width-600 as img %}
+                <figure class="zoom rounded" onmousemove="zoom(event)" style="background-image: url({{img.url}})"> 
+                    <img class="card-img-top" src="{{ img.url }}" alt="{{img.alt}}">
+                </figure>
+                <div class="card-body">
+                    <p class="card-text">This little fellow has been with us for around 18 years.</p>
+                    <a href="/cats/misiek/" class="btn btn-primary">See a full pic!</a>
+                </div>
+            </div>
+        </div>
+        <div class="col d-flex flex-column align-items-center mt-5 mt-xxl-0 mx-2">
+            <div class="word text-white text-center pb-2">
+                <span>D</span>
+                <span>Y</span>
+                <span>Z</span>
+                <span>I</span>
+                <span>O</span>
+                <span>&</span>
+                <span>D</span>
+                <span>O</span>
+                <span>R</span>
+                <span>I</span>
+              </div>
+            <div class="card text-center" style="width: 18rem;">
+                {% image page.cat4_image width-600 as img %}
+                <figure class="zoom rounded" onmousemove="zoom(event)" style="background-image: url({{img.url}})"> 
+                    <img class="card-img-top" src="{{ img.url }}" alt="{{img.alt}}">
+                </figure>
+                <div class="card-body">
+                    <p class="card-text">They are siblings. The cutest ever, right?</p>
+                    <a href="/cats/dyziodori/" class="btn btn-primary">See a full pic!</a>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+{% block extra_js %}
+    <script>
+
+        const spans = document.querySelectorAll('.word span');
+
+        spans.forEach((span, idx) => {
+        span.addEventListener('click', (e) => {
+            e.target.classList.add('active');
+        });
+        span.addEventListener('animationend', (e) => {
+            e.target.classList.remove('active');
+        });
+        });  
+
+        function zoom(e){
+            var zoomer = e.currentTarget;
+            e.offsetX ? offsetX = e.offsetX : offsetX = e.touches[0].pageX
+            e.offsetY ? offsetY = e.offsetY : offsetX = e.touches[0].pageX
+            x = offsetX/zoomer.offsetWidth*100
+            y = offsetY/zoomer.offsetHeight*100
+            zoomer.style.backgroundPosition = x + '% ' + y + '%';
+          };
+
+        {% comment %} let zoomer = function (){
+            document.querySelector('#img-zoomer-box')
+              .addEventListener('mousemove', function(e) {
+          
+              let original = document.querySelector('#img-1'),
+                  magnified = document.querySelector('#img-2', '#img-3'),
+                  style = magnified.style,
+                  x = e.pageX - this.offsetLeft,
+                  y = e.pageY - this.offsetTop,
+                  imgWidth = original.offsetWidth,
+                  imgHeight = original.offsetHeight,
+                  xperc = ((x/imgWidth) * 100),
+                  yperc = ((y/imgHeight) * 100);
+          
+              //lets user scroll past right edge of image
+              if(x > (.01 * imgWidth)) {
+                xperc += (.15 * xperc);
+              };
+          
+              //lets user scroll past bottom edge of image
+              if(y >= (.01 * imgHeight)) {
+                yperc += (.15 * yperc);
+              };
+          
+              style.backgroundPositionX = (xperc - 9) + '%';
+              style.backgroundPositionY = (yperc - 9) + '%';
+          
+              style.left = (x - 180) + 'px';
+              style.top = (y - 180) + 'px';
+          
+            }, false);
+          }(); {% endcomment %}
+
+        
+
+
+        
+    </script>
+{% endblock %}
+{% endblock content %}

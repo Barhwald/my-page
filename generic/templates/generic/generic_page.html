@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static wagtailimages_tags wagtailcore_tags%}
+
+{% block body_class %}template-genericpage{% endblock %}
+
+{% block extra_css %}
+
+{% comment %}
+Delete the line below if you're just getting started and want to remove the welcome screen!
+{% endcomment %}
+<link rel="stylesheet" href="{% static 'css/generic.css' %}">
+
+{% endblock extra_css %}
+
+{% block content %}
+
+    <p class="diff-font text-white mt-5 text-center" id="intro"> {{ page.intro }}</p>
+    {% image page.banner_image fill-1000x1000 as img%}
+    <img class="rounded mx-auto d-block" style="width: 300px" src="{{ img.url }}" alt="{{img.alt}}">
+    <h3 class="text-white pt-3 lh-lg" id="banner_title">{{ page.banner_title }}</h3>
+    {% include_block page.body %}
+    <hr>
+  
+      {% comment %} <div id="img-zoomer-box">
+            {% image page.author.image width-1400 as img%}
+            <img class ="rounded mx-auto d-block" id="img-1" src="{{ img.url }}" alt="{{img.alt}}">
+            <div class="mx-auto" id="img-2"></div>   
+      </div> {% endcomment %}
+        {% comment %} <p class="text-white">
+          Page created by {{ page.author.name }}.
+          He is a {{ page.author.title }}.
+          {% if page.author.company_url %}
+              His website is to be found here
+              <a href="{{ page.author.company_url }}">
+                  View website
+              </a>
+          {% endif %}
+        </p> {% endcomment %}
+    
+
+    {% block extra_js %}
+    <script>
+      
+
+    </script>
+    {% endblock %}
+
+    
+{% endblock content %}
