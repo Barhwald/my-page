@@ -1,0 +1,45 @@
+body {
+  background-color:#222629;
+}
+
+main {
+  height: 75vh;
+}
+
+.banner_photo {
+  width: 25%;
+  height: auto;
+  border-radius: 10%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.shadoww {
+  text-shadow: 1px 1px black;
+}
+
+h3 {
+  font-size: clamp(1rem, 2vw, 5rem);
+}
+
+.welcome {
+  margin-top: 2rem;
+}
+
+.name {
+  font-family: 'Times New Roman', Times, serif;
+  position: relative;
+  bottom: 9rem;
+  width: 100%;
+}
+
+.name div {
+  font-size: clamp(2rem, 6vw, 7rem); 
+  background-image: url(https://64.media.tumblr.com/273559a758af1e0946f1a6dbacf0f75f/c706262248c90e8e-ac/s400x600/e98cc9aa0bc969fbebd243d7895f93f77299d1d0.gifv);
+  background-size: cover;
+  color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

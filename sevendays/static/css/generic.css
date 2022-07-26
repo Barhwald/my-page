@@ -1,0 +1,35 @@
+main {
+  max-width: 60%;
+  margin: 0 auto;
+  flex-grow: 1;
+  
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: #222629;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.diff-font {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+#banner_title {
+  text-align: left;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 3rem;
+}
+
+#intro {
+  font-size: clamp(3rem, 5.5vw, 6rem); 
+  padding-top: 5rem;
+}
+
+
+
