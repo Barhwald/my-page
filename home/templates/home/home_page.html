@@ -15,8 +15,10 @@ Delete the line below if you're just getting started and want to remove the welc
 <div class="welcome text-center text-white py-5">
     <h3 class="shadoww">{{ page.banner_title }}</h3>
 </div>
+<div class="photo-main">
 {% image page.banner_photo width-1000 as img %}
     <img class ="banner_photo mx-auto d-block" src="{{ img.url }}" alt="{{img.alt}}">
+</div>
 <div class="name">
     <div class="text-white text-center">Michał Bylina</div>
 </div>

@@ -17,7 +17,12 @@ a {
 }
 
 .shadoww {
+
   text-shadow: 1px 1px black;
+}
+
+.photo-main {
+  height: 25rem;
 }
 
 h3 {
